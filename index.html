@@ -1,60 +1,91 @@
-‎<!DOCTYPE html>
-‎<html lang="en">
-‎<head>
-‎  <meta charset="UTF-8">
-‎  <meta name="viewport" content="width=device-width, initial-scale=1">
-‎  <title>Ehsan Tools - Maintenance</title>
-‎  <style>
-‎    body {
-‎      margin: 0;
-‎      font-family: 'Segoe UI', sans-serif;
-‎      background: #f8f9fa;
-‎      color: #333;
-‎      display: flex;
-‎      align-items: center;
-‎      justify-content: center;
-‎      height: 100vh;
-‎      flex-direction: column;
-‎      text-align: center;
-‎    }
-‎    .container {
-‎      max-width: 500px;
-‎      padding: 20px;
-‎      border: 2px solid #ccc;
-‎      border-radius: 12px;
-‎      background-color: #ffffff;
-‎      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-‎    }
-‎    h1 {
-‎      color: #ff6600;
-‎    }
-‎    p {
-‎      font-size: 18px;
-‎      margin-top: 10px;
-‎    }
-‎    .spinner {
-‎      margin-top: 20px;
-‎      border: 6px solid #f3f3f3;
-‎      border-top: 6px solid #ff6600;
-‎      border-radius: 50%;
-‎      width: 50px;
-‎      height: 50px;
-‎      animation: spin 1s linear infinite;
-‎      margin-left: auto;
-‎      margin-right: auto;
-‎    }
-‎    @keyframes spin {
-‎      0% { transform: rotate(0deg);}
-‎      100% { transform: rotate(360deg);}
-‎    }
-‎  </style>
-‎</head>
-‎<body>
-‎  <div class="container">
-‎    <h1>🚧 Ehsan Tools</h1>
-‎    <p>Our tools are currently under maintenance.<br>Please check back soon.</p>
-‎    <div class="spinner"></div>
-‎  </div>
-‎</body>
-‎</html>
-‎
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ehsan Tools - Maintenance</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    .container {
+      max-width: 500px;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      background-color: #ffffff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #ff6600;
+    }
+    p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    .spinner {
+      margin-top: 20px;
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #ff6600;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    #countdown {
+      margin-top: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚧 Ehsan Tools</h1>
+    <p>Our tools are currently under maintenance.<br>Please check back soon.</p>
+    <div class="spinner"></div>
+    <div id="countdown">Loading countdown...</div>
+  </div>
+
+  <script>
+    // Set the countdown for 18 hours from now
+    const countdownElement = document.getElementById("countdown");
+    const endTime = new Date().getTime() + (18 * 60 * 60 * 1000); // 18 hours in ms
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = endTime - now;
+
+      if (distance <= 0) {
+        countdownElement.innerHTML = "We're back online!";
+        return;
+      }
+
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      countdownElement.innerHTML = `Estimated Time Left: ${hours}h ${minutes}m ${seconds}s`;
+    };
+
+    updateCountdown(); // initial call
+    setInterval(updateCountdown, 1000); // update every second
+  </script>
+</body>
+</html>
