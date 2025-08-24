@@ -28,7 +28,7 @@
       place-items:center;
       position:relative;
     }
-    /* overlay on background */
+    /* overlay */
     .overlay{
       position: fixed; inset:0;
       background: rgba(0,0,0,0.55);
@@ -96,7 +96,7 @@
     .footer{ margin-top:14px; text-align:center; color:var(--muted); font-size:.85rem }
     a,a:visited{ color:#a7f3d0; text-decoration:none }
 
-    /* New styles */
+    /* New glowing buy button */
     .buy-btn{
       display:block;
       width:100%;
@@ -108,9 +108,30 @@
       color:white; font-weight:600;
       cursor:pointer;
       text-decoration:none;
-      transition:filter .2s ease;
+      position:relative;
+      z-index:2;
+      overflow:hidden;
+    }
+    .buy-btn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:12px;
+      padding:2px;
+      background:linear-gradient(45deg,#3b82f6,#22c55e,#a855f7,#f59e0b,#ef4444,#3b82f6);
+      background-size:300% 300%;
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+              mask-composite:exclude;
+      animation:lightmove 4s linear infinite;
+    }
+    @keyframes lightmove {
+      0% { background-position:0% 50%; }
+      50% { background-position:100% 50%; }
+      100% { background-position:0% 50%; }
     }
     .buy-btn:hover{ filter:brightness(1.1); }
+
     marquee{
       margin-top:10px;
       font-size:.85rem;
@@ -155,10 +176,12 @@
       <div class="hint">Hint: username <code>paid login</code> · password <code>Paid login buy karain</code></div>
     </form>
 
-    <!-- New Buy Button -->
-    <a href="https://wa.me/923376143010" target="_blank" class="buy-btn">📩 Contact to Buy Login</a>
+    <!-- Fixed Buy Button with glow -->
+    <a href="https://api.whatsapp.com/send?phone=923376143010" target="_blank" class="buy-btn">
+      📩 Contact to Buy Login
+    </a>
 
-    <!-- New marquee -->
+    <!-- Marquee -->
     <marquee behavior="scroll" direction="left">
       🚫 This tool is paid — We don't give free login to anyone · Developed by Wasi ☎ +92 337 6143010
     </marquee>
@@ -199,4 +222,4 @@
     })();
   </script>
 </body>
-  </html>
+</html>
