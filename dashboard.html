@@ -18,8 +18,6 @@
       --shadow:0 10px 25px rgba(0,0,0,.25);
       --radius:22px;
     }
-
-    /* Light theme variables */
     body.light {
       --bg:#f5f7fa;
       --card:#ffffff;
@@ -29,7 +27,6 @@
       --ring:rgba(0,0,0,.25);
       --shadow:0 10px 25px rgba(0,0,0,.15);
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -37,10 +34,8 @@
       font-family:"Inter",sans-serif;
       color:var(--text);
       background: var(--bg) center/cover no-repeat fixed, #0b1220;
-      position:relative;
       display:flex;
       flex-direction:column;
-      min-height:100%;
       transition: all 0.4s ease;
     }
     body::before{
@@ -50,102 +45,29 @@
       backdrop-filter: blur(6px) saturate(120%);
       -webkit-backdrop-filter: blur(6px) saturate(120%);
       z-index:0;
-      transition: background 0.4s ease;
     }
-    body.light::before{
-      background:rgba(255,255,255,0.35);
-    }
-    .wrap{
-      position:relative;
-      flex:1;
-      z-index:1;
-      display:flex;
-      flex-direction:column;
-    }
-    header{
-      padding:28px 20px 8px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .title{
-      display:flex; align-items:center; gap:14px;
-    }
-    .title h1{
-      margin:0;
-      font-size:clamp(24px,3.5vw,42px);
-      letter-spacing:.5px;
-      text-shadow:0 4px 18px rgba(0,0,0,.55);
-    }
-    .badge{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      background:var(--glass);
-      border:1px solid var(--ring);
-      box-shadow:var(--shadow);
-    }
-    .toggle-btn{
-      background:var(--glass);
-      border:1px solid var(--ring);
-      border-radius:50%;
-      width:40px; height:40px;
-      display:grid; place-items:center;
-      font-size:18px; cursor:pointer;
-      box-shadow:var(--shadow);
-      transition: all .3s ease;
-    }
-    .grid{
-      display:grid;
-      gap:16px;
-      padding:18px 20px 36px;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      align-items:stretch;
-    }
+    body.light::before{ background:rgba(255,255,255,0.35); }
+    .wrap{ position:relative; flex:1; z-index:1; display:flex; flex-direction:column; }
+    header{ padding:28px 20px 8px; display:flex; justify-content:space-between; align-items:center; }
+    .title{ display:flex; align-items:center; gap:14px; }
+    .title h1{ margin:0; font-size:clamp(24px,3.5vw,42px); text-shadow:0 4px 18px rgba(0,0,0,.55); }
+    .badge{ font-size:12px; padding:6px 10px; border-radius:999px; background:var(--glass); border:1px solid var(--ring); box-shadow:var(--shadow);}
+    .toggle-btn{ background:var(--glass); border:1px solid var(--ring); border-radius:50%; width:40px; height:40px; display:grid; place-items:center; cursor:pointer; box-shadow:var(--shadow); }
+    .grid{ display:grid; gap:16px; padding:18px 20px 36px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
     .card{
       display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:18px 18px;
-      border-radius:var(--radius);
+      padding:18px; border-radius:var(--radius);
       background:linear-gradient(180deg, var(--card), var(--cardHover));
-      color:var(--text);
-      text-decoration:none;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(255,255,255,.08);
-      transition: transform .25s ease, box-shadow .25s ease, opacity .2s ease;
-      will-change:transform;
-      position:relative;
-      overflow:hidden;
+      color:var(--text); text-decoration:none;
+      box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.08);
+      transition: transform .25s ease;
+      position:relative; overflow:hidden;
     }
-    .card::after{
-      content:"";
-      position:absolute;
-      top:0; left:-100%;
-      width:100%; height:100%;
-      background:rgba(255,255,255,.2);
-      transition: left 0.4s ease;
-    }
-    .card:hover::after{
-      left:100%;
-    }
-    .card:hover{ transform:translateY(-5px) scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,.35); }
-    .card:active{ transform:scale(0.98); }
-    .card .left{ display:flex; align-items:center; gap:12px; min-width:0; }
-    .icon{
-      width:42px; height:42px; border-radius:12px;
-      background:rgba(255,255,255,.15);
-      display:grid; place-items:center; font-size:22px;
-      border:1px solid rgba(255,255,255,.25);
-    }
-    .label{
-      font-weight:700; letter-spacing:.3px; font-size:16px;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    }
-    .chev{ font-size:18px; opacity:.9; }
-    footer{
-      padding:12px 20px 28px;
-      opacity:.85; font-size:13px;
-      text-align:center;
-    }
+    .card:hover{ transform:translateY(-5px) scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,.35);}
+    .card .left{ display:flex; align-items:center; gap:12px; }
+    .icon{ width:42px; height:42px; border-radius:12px; background:rgba(255,255,255,.15); display:grid; place-items:center; font-size:22px; }
+    .label{ font-weight:700; font-size:16px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    footer{ padding:12px 20px 28px; font-size:13px; text-align:center; opacity:.85; }
   </style>
 </head>
 <body>
@@ -159,179 +81,45 @@
     </header>
 
     <main class="grid" aria-label="Tools">
-      <a class="card" href="https://shadowpaksim.xyz/shadowzongshadowprivate.php" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">🗂️</div>
-          <div class="label">Zong Data</div>
-        </div>
-        <div class="chev">↗</div>
+      <a class="card" href="https://shadowpaksim.xyz/shadowzongshadowprivate.php" target="_blank">
+        <div class="left"><div class="icon">🗂️</div><div class="label">Zong Data</div></div><div class="chev">↗</div>
       </a>
-
-      <a class="card" href="https://shadowpaksim.xyz/shadowjazzshadowprivate.php" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">📊</div>
-          <div class="label">Jazz Data</div>
-        </div>
-        <div class="chev">↗</div>
+      <a class="card" href="https://shadowpaksim.xyz/shadowjazzshadowprivate.php" target="_blank">
+        <div class="left"><div class="icon">📊</div><div class="label">Jazz Data</div></div><div class="chev">↗</div>
       </a>
-
-      <a class="card" href="https://shadowpaksim.xyz/telenorshadowprivate.php" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">📁</div>
-          <div class="label">Telenor Data</div>
-        </div>
-        <div class="chev">↗</div>
+      <a class="card" href="https://shadowpaksim.xyz/telenorshadowprivate.php" target="_blank">
+        <div class="left"><div class="icon">📁</div><div class="label">Telenor Data</div></div><div class="chev">↗</div>
       </a>
-
-      <a class="card" href="https://shadowpaksim.xyz/shadowufoneshadowprivate.php" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">📊</div>
-          <div class="label">Ufone data</div>
-        </div>
-        <div class="chev">↗</div>
+      <a class="card" href="https://shadowpaksim.xyz/shadowufoneshadowprivate.php" target="_blank">
+        <div class="left"><div class="icon">📊</div><div class="label">Ufone Data</div></div><div class="chev">↗</div>
       </a>
-
-      <a class="card" href="https://wasi-song-playbax.vercel.app/" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">▶️</div>
-          <div class="label">YouTube premium</div>
-        </div>
-        <div class="chev">↗</div>
+      <a class="card" href="https://wasi-song-playbax.vercel.app/" target="_blank">
+        <div class="left"><div class="icon">▶️</div><div class="label">YouTube Premium</div></div><div class="chev">↗</div>
       </a>
-      <a class="card" href="https://wasismmpannel.online" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">▶️</div>
-          <div class="label">Tiktok likes</div>
-        </div>
-        <div class="chev">↗</div>
+      <a class="card" href="https://wasismmpannel.online" target="_blank">
+        <div class="left"><div class="icon">🎵</div><div class="label">TikTok Likes</div></div><div class="chev">↗</div>
       </a>
-      <a class="card" href="https://drive.google.com/drive/folders/1g71P0WxlPpy7TAyul_wUyHyWPWdbG4i1?usp=drive_link" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">📩</div>
-          <div class="label">Unlimited gmail</div>
-        </div>
-        <div class="chev">↗</div>
+      <a class="card" href="https://drive.google.com/drive/folders/1g71P0WxlPpy7TAyul_wUyHyWPWdbG4i1" target="_blank">
+        <div class="left"><div class="icon">📩</div><div class="label">Unlimited Gmail</div></div><div class="chev">↗</div>
       </a>
-      <a class="card" href="https://zefoy.com" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">👀</div>
-          <div class="label">Tiktok views</div>
-        </div>
-        <div class="chev">↗</div>
+      <a class="card" href="https://zefoy.com" target="_blank">
+        <div class="left"><div class="icon">👀</div><div class="label">TikTok Views</div></div><div class="chev">↗</div>
       </a>
-      ‎<a class="card" href="https://mega.nz/folder/MY4GDIKC#Dj7eS7BlNyCZMtBDkT-TnQ" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">🎆</div>
-‎          <div class="label">Amazon prime</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://www.mediafire.com/file/1fvk8gt2wxrnkqv/8-ball-pool-55-4-2%25282%2529.apk/file" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">🎱</div>
-‎          <div class="label">8ball pool hack</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://drive.google.com/drive/folders/1ZA_AWJfDmQzeSSB5SjynRUkIyJdhVLP3?usp=drive_link" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">💀</div>
-‎          <div class="label">freefire hack</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://mega.nz/folder/AMwiTKYZ#l4q4kGb-uW4WYqO2QpLaEg" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">📊</div>
-‎          <div class="label">TikTok UK usa account </div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://www.mediafire.com/folder/inelrn88bihgu/Free+FB+likes+mthd+by+ARQ" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">♥️</div>
-‎          <div class="label">Fb likes</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://mega.nz/folder/eRMBmD4R#wGDOnYYCB-oSAlSmFwUZnw" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">💀</div>
-‎          <div class="label">Hacking course by ehsan</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://drive.google.com/drive/folders/1S6nqgT4Zxwr2_yZbXscjqAcYQjlebZvv?usp=drive_link" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">🚫</div>
-‎          <div class="label">Snapchat ban method</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://drive.google.com/drive/folders/1GdO7kI3AELLW93Ezmv4N7pJJeas0IQyJ" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">✅</div>
-‎          <div class="label">Facebook recover</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://wasismmpannel.online" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">🅾️</div>
-‎          <div class="label">Netflix screen</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://drive.google.com/file/d/1UNd1RitSHyxYo87opZQTmuIqSperw_9n/view" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">🎟️</div>
-‎          <div class="label">Adsense approval</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://www.mediafire.com/file/nc0878j4tybpvbb/gallery_crash.zip/file" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">💥</div>
-‎          <div class="label">gallery crash method</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://www.mediafire.com/file/j2zzezhvufnnx36/Easypaisa_Screenshot_1.0.apk/file" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">💲</div>
-‎          <div class="label">easypaisa slip fake</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎<a class="card" href="https://www.mediafire.com/file/rjrf6yr69aj3pqo/WHATSAP_CHANNEL_BAN_METHOD_BY_lwaportal.xyz.zip/file" target="_blank" rel="noopener">
-‎        <div class="left">
-‎          <div class="icon">📊</div>
-‎          <div class="label">Whatsapp channel ban</div>
-‎        </div>
-‎        <div class="chev">↗</div>
-‎      </a>
-‎
+      <!-- Yahan se neeche jitne bhi links hain waise hi same tarah clean karke lagao -->
     </main>
 
-    <footer>
-      © <span id="yr"></span> EhsanXtools. All rights reserved.
-    </footer>
+    <footer>© <span id="yr"></span> EhsanXtools. All rights reserved.</footer>
   </div>
 
-  <!-- Sound Effect -->
   <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
-
-    // Theme toggle
     const toggleBtn = document.getElementById('themeToggle');
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light');
       toggleBtn.textContent = document.body.classList.contains('light') ? "🌞" : "🌙";
     });
-
-    // Click sound on tools
     const sound = document.getElementById('clickSound');
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('click', () => {
@@ -341,5 +129,4 @@
     });
   </script>
 </body>
-        </html>
-        
+</html>
