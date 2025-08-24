@@ -3,250 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ehsan toolkit — Dashboard</title>
-  <meta name="color-scheme" content="light dark" />
+  <title>Login — King Data</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:url('https://i.postimg.cc/sXm4JxJ4/images-2-12.jpg');
-      --card:#176BFF;
-      --cardHover:#0f56cc;
-      --text:#ffffff;
-      --glass:rgba(0,0,0,.45);
-      --ring:rgba(255,255,255,.45);
-      --shadow:0 10px 25px rgba(0,0,0,.25);
-      --radius:22px;
+      --bg: #0b1020;
+      --card: rgba(255,255,255,0.1);
+      --border: rgba(255,255,255,0.18);
+      --text: #eaf2ff;
+      --muted:#b8c3d6;
+      --accent:#4ade80;
+      --danger:#f87171;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-
-    /* Light theme variables */
-    body.light {
-      --bg:#f5f7fa;
-      --card:#ffffff;
-      --cardHover:#e2e6f0;
-      --text:#111;
-      --glass:rgba(255,255,255,.65);
-      --ring:rgba(0,0,0,.25);
-      --shadow:0 10px 25px rgba(0,0,0,.15);
-    }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family:"Inter",sans-serif;
       color:var(--text);
-      background: var(--bg) center/cover no-repeat fixed, #0b1220;
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      min-height:100%;
-      transition: all 0.4s ease;
-    }
-    body::before{
-      content:"";
-      position:fixed; inset:0;
-      background:rgba(0,0,0,0.55);
-      backdrop-filter: blur(6px) saturate(120%);
-      -webkit-backdrop-filter: blur(6px) saturate(120%);
-      z-index:0;
-      transition: background 0.4s ease;
-    }
-    body.light::before{
-      background:rgba(255,255,255,0.35);
-    }
-    .wrap{
-      position:relative;
-      flex:1;
-      z-index:1;
-      display:flex;
-      flex-direction:column;
-    }
-    header{
-      padding:28px 20px 8px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .title{
-      display:flex; align-items:center; gap:14px;
-    }
-    .title h1{
-      margin:0;
-      font-size:clamp(24px,3.5vw,42px);
-      letter-spacing:.5px;
-      text-shadow:0 4px 18px rgba(0,0,0,.55);
-    }
-    .badge{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      background:var(--glass);
-      border:1px solid var(--ring);
-      box-shadow:var(--shadow);
-    }
-    .toggle-btn{
-      background:var(--glass);
-      border:1px solid var(--ring);
-      border-radius:50%;
-      width:40px; height:40px;
-      display:grid; place-items:center;
-      font-size:18px; cursor:pointer;
-      box-shadow:var(--shadow);
-      transition: all .3s ease;
-    }
-    .grid{
+      background: var(--bg) url("https://i.postimg.cc/sXm4JxJ4/images-2-12.jpg") center/cover no-repeat fixed;
       display:grid;
-      gap:16px;
-      padding:18px 20px 36px;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      align-items:stretch;
+      place-items:center;
+      position:relative;
+    }
+    /* overlay on background */
+    .overlay{
+      position: fixed; inset:0;
+      background: rgba(0,0,0,0.55); /* dark overlay for readability */
+      backdrop-filter: blur(6px);
+      z-index:0;
     }
     .card{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:18px 18px;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg, var(--card), var(--cardHover));
-      color:var(--text);
-      text-decoration:none;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(255,255,255,.08);
-      transition: transform .25s ease, box-shadow .25s ease, opacity .2s ease;
-      will-change:transform;
+      width:min(92vw,420px);
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border:1px solid var(--border);
+      border-radius:20px;
+      box-shadow: var(--shadow);
+      padding:26px;
       position:relative;
+      z-index:1; /* card above overlay */
       overflow:hidden;
     }
-    .card::after{
+    .card::before{
       content:"";
-      position:absolute;
-      top:0; left:-100%;
-      width:100%; height:100%;
-      background:rgba(255,255,255,.2);
-      transition: left 0.4s ease;
+      position:absolute; inset:-2px;
+      background: conic-gradient(from 180deg at 50% 50%, #4ade80, #60a5fa, #a78bfa, #4ade80);
+      filter: blur(24px); opacity:.18; z-index:0;
     }
-    .card:hover::after{
-      left:100%;
+    .header{ position:relative; z-index:1; text-align:center; margin-bottom:18px;}
+    .header h1{margin:0 0 6px; font-size:1.6rem; font-weight:700;}
+    .header p{margin:0; color:var(--muted); font-size:.95rem}
+    form{ position:relative; z-index:1; display:grid; gap:14px; }
+    label{ font-size:.9rem; color:var(--muted); display:block; margin-bottom:6px}
+    .field{
+      display:flex; align-items:center; gap:10px;
+      background: rgba(12,16,30,.6);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:12px; padding:12px 14px;
+      transition:border .2s ease, transform .05s ease;
     }
-    .card:hover{ transform:translateY(-5px) scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,.35); }
-    .card:active{ transform:scale(0.98); }
-    .card .left{ display:flex; align-items:center; gap:12px; min-width:0; }
-    .icon{
-      width:42px; height:42px; border-radius:12px;
-      background:rgba(255,255,255,.15);
-      display:grid; place-items:center; font-size:22px;
-      border:1px solid rgba(255,255,255,.25);
+    .field:focus-within{ border-color:#86efac; transform: translateY(-1px);}
+    .field input{
+      flex:1; background:transparent; border:0; outline:0; color:var(--text); font-size:1rem;
     }
-    .label{
-      font-weight:700; letter-spacing:.3px; font-size:16px;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    .actions{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin-top:6px;
     }
-    .chev{ font-size:18px; opacity:.9; }
-    footer{
-      padding:12px 20px 28px;
-      opacity:.85; font-size:13px;
-      text-align:center;
+    .checkbox{ display:flex; gap:10px; align-items:center; color:var(--muted); font-size:.9rem }
+    .checkbox input{ width:18px; height:18px; }
+    .btn{
+      appearance:none; border:0; outline:0; cursor:pointer;
+      padding:12px 16px; border-radius:12px; font-weight:700; font-size:1rem;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      color:#07120a; box-shadow: 0 8px 18px rgba(34,197,94,.35);
+      transition: transform .06s ease, filter .2s ease;
     }
+    .btn:hover{ filter: brightness(1.05) }
+    .btn:active{ transform: translateY(1px) }
+    .toggle-eye{
+      user-select:none; cursor:pointer; opacity:.9;
+      font-size:.95rem; color:var(--muted);
+    }
+    .hint,.error{ font-size:.9rem; margin-top:6px; min-height:1.2em;}
+    .hint{ color:var(--muted) }
+    .error{ color:var(--danger); }
+    .caps{ display:none; color:#fbbf24; font-size:.85rem }
+    .footer{ margin-top:14px; text-align:center; color:var(--muted); font-size:.85rem }
+    a,a:visited{ color:#a7f3d0; text-decoration:none }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="title">
-        <h1>EhsanXtools</h1>
-        <span class="badge">Dashboard</span>
+  <div class="overlay"></div>
+
+  <main class="card">
+    <div class="header">
+      <h1>Welcome back</h1>
+      <p>Please sign in to continue</p>
+    </div>
+
+    <form id="loginForm" autocomplete="off" novalidate>
+      <div>
+        <label for="username">Username</label>
+        <div class="field">
+          <input id="username" name="username" type="text" placeholder="Enter username" required />
+        </div>
       </div>
-      <div class="toggle-btn" id="themeToggle">🌙</div>
-    </header>
 
-    <main class="grid" aria-label="Tools">
-      <a class="card" href="https://shadowpaksim.xyz/shadowzongshadowprivate.php" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">🗂️</div>
-          <div class="label">Zong Data</div>
+      <div>
+        <label for="password">Password</label>
+        <div class="field">
+          <input id="password" name="password" type="password" placeholder="Enter password" required />
+          <span class="toggle-eye" id="togglePwd">👁️</span>
         </div>
-        <div class="chev">↗</div>
-      </a>
+        <div class="caps" id="capsNotice">Caps Lock is ON</div>
+      </div>
 
-      <a class="card" href="https://shadowpaksim.xyz/shadowjazzshadowprivate.php" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">📊</div>
-          <div class="label">Jazz Data</div>
-        </div>
-        <div class="chev">↗</div>
-      </a>
+      <div class="actions">
+        <label class="checkbox">
+          <input type="checkbox" id="remember" /> Remember me
+        </label>
+        <button class="btn" type="submit">Sign in</button>
+      </div>
 
-      <a class="card" href="https://shadowpaksim.xyz/telenorshadowprivate.php" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">📁</div>
-          <div class="label">Telenor Data</div>
-        </div>
-        <div class="chev">↗</div>
-      </a>
+      <div class="error" id="error"></div>
+      <div class="hint">Hint: username <code>paid login</code> · password <code>Paid login buy karain</code></div>
+    </form>
 
-      <a class="card" href="https://shadowpaksim.xyz/shadowufoneshadowprivate.php" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">📊</div>
-          <div class="label">Ufone data</div>
-        </div>
-        <div class="chev">↗</div>
-      </a>
-
-      <a class="card" href="https://wasi-song-playbax.vercel.app/" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">▶️</div>
-          <div class="label">YouTube premium</div>
-        </div>
-        <div class="chev">↗</div>
-      </a>
-      <a class="card" href="https://wasismmpannel.online" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">▶️</div>
-          <div class="label">Tiktok likes</div>
-        </div>
-        <div class="chev">↗</div>
-      </a>
-      <a class="card" href="https://drive.google.com/drive/folders/1g71P0WxlPpy7TAyul_wUyHyWPWdbG4i1?usp=drive_link" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">📩</div>
-          <div class="label">Unlimited gmail</div>
-        </div>
-        <div class="chev">↗</div>
-      </a>
-      <a class="card" href="https://zefoy.com" target="_blank" rel="noopener">
-        <div class="left">
-          <div class="icon">👀</div>
-          <div class="label">Tiktok views</div>
-        </div>
-        <div class="chev">↗</div>
-      </a>
-    </main>
-
-    <footer>
-      © <span id="yr"></span> Awan. All rights reserved.
-    </footer>
-  </div>
-
-  <!-- Sound Effect -->
-  <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
+    <div class="footer">
+      © <span id="year"></span> King Data. All rights reserved.
+    </div>
+  </main>
 
   <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
+    (function(){
+      const VALID_USER="kingdata", VALID_PASS="Malik101";
+      const form=document.getElementById("loginForm");
+      const user=document.getElementById("username");
+      const pass=document.getElementById("password");
+      const errorBox=document.getElementById("error");
+      const togglePwd=document.getElementById("togglePwd");
+      const capsNotice=document.getElementById("capsNotice");
+      const remember=document.getElementById("remember");
+      const year=document.getElementById("year");
+      year.textContent=new Date().getFullYear();
 
-    // Theme toggle
-    const toggleBtn = document.getElementById('themeToggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      toggleBtn.textContent = document.body.classList.contains('light') ? "🌞" : "🌙";
-    });
+      togglePwd.addEventListener("click",()=>{ pass.type= pass.type==="password"?"text":"password";});
+      pass.addEventListener("keyup",(e)=>{ capsNotice.style.display=e.getModifierState("CapsLock")?"block":"none";});
+      [user,pass].forEach(el=>el.addEventListener("keydown",(e)=>{if(e.key==="Enter") form.requestSubmit();}));
+      const savedUser=localStorage.getItem("kd_username"); if(savedUser) user.value=savedUser;
 
-    // Click sound on tools
-    const sound = document.getElementById('clickSound');
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
-        sound.currentTime = 0;
-        sound.play();
+      form.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        const u=user.value.trim(), p=pass.value;
+        if(!u||!p){ errorBox.textContent="Please fill in both fields."; return;}
+        if(u===VALID_USER&&p===VALID_PASS){
+          errorBox.textContent="";
+          if(remember.checked){ localStorage.setItem("kd_username",u);} else {localStorage.removeItem("kd_username");}
+          window.location.href="dashboard.html";
+        } else { errorBox.textContent="Invalid username or password."; }
       });
-    });
+    })();
   </script>
 </body>
 </html>
