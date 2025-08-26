@@ -1,143 +1,126 @@
 <!doctype html>
-
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>We’re Down for Maintenance</title>
-  <meta name="color-scheme" content="light dark" />
-  <style>
-    :root {
-      --bg: #0f172a;      /* slate-900 */
-      --bg2: #111827;     /* gray-900 */
-      --card: #0b1220cc;  /* translucent */
-      --text: #e5e7eb;    /* gray-200 */
-      --muted: #94a3b8;   /* slate-400 */
-      --accent: #60a5fa;  /* blue-400 */
-      --ring: #1d4ed8;    /* blue-700 */
-      --ok: #22c55e;      /* green-500 */
-    }@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #f1f5f9;    /* slate-100 */
-    --bg2: #e5e7eb;   /* gray-200 */
-    --card: #ffffffcc;
-    --text: #0f172a;  /* slate-900 */
-    --muted: #475569; /* slate-600 */
-    --accent: #2563eb;/* blue-600 */
-    --ring: #3b82f6;  /* blue-500 */
-    --ok: #16a34a;    /* green-600 */
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>⚠️ Security Alert</title>
+<style>
+  :root{
+    --bg:#0b0f14;
+    --red:#ff3b30;
+    --muted:#b8c1c9;
+    --mono: "Courier New", Courier, monospace;
   }
-}
-
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  color: var(--text);
-  background: radial-gradient(1200px 800px at 20% 10%, #1e293b33, transparent),
-              radial-gradient(1000px 600px at 80% 90%, #33415533, transparent),
-              linear-gradient(135deg, var(--bg), var(--bg2));
-  display: grid;
-  place-items: center;
-  padding: 2rem;
-}
-
-.card {
-  width: 100%;
-  max-width: 640px;
-  background: var(--card);
-  border: 1px solid #ffffff1a;
-  backdrop-filter: blur(8px);
-  border-radius: 1.25rem;
-  box-shadow: 0 20px 60px #00000055, inset 0 1px 0 #ffffff22;
-  padding: 2rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  animation: pop 400ms cubic-bezier(.2,.7,.2,1) both;
-}
-
-@keyframes pop { from { transform: translateY(8px) scale(.98); opacity: 0 } to { transform: none; opacity: 1 } }
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .4rem .75rem;
-  border-radius: 999px;
-  font-size: .8rem;
-  letter-spacing: .02em;
-  color: var(--text);
-  background: #94a3b811;
-  border: 1px solid #94a3b833;
-}
-
-.spinner {
-  width: 14px; height: 14px;
-  border-radius: 999px;
-  border: 2px solid currentColor;
-  border-right-color: transparent;
-  animation: spin 900ms linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-h1 { font-size: clamp(1.6rem, 2.8vw + 1rem, 2.4rem); margin: 1rem 0 .5rem; }
-p { margin: .35rem 0; color: var(--muted); line-height: 1.6; }
-
-.actions { margin-top: 1.25rem; display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
-
-.btn {
-  appearance: none; border: 0; cursor: pointer;
-  padding: .8rem 1rem; border-radius: .9rem; font-weight: 600;
-  background: #111827; color: #e5e7eb; border: 1px solid #ffffff1a;
-}
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0); }
-
-.btn-primary { background: linear-gradient(180deg, var(--accent), #2563eb); color: #ffffff; border: none; box-shadow: 0 8px 20px #2563eb55; }
-.btn-outline { background: transparent; color: var(--text); }
-
-footer { margin-top: 1.25rem; font-size: .85rem; color: var(--muted); }
-a { color: inherit; }
-.ok-dot { width: .6rem; height: .6rem; background: var(--ok); border-radius: 999px; box-shadow: 0 0 0 4px #22c55e22; }
-
-.blur-blob {
-  position: absolute; inset: auto auto -60px -60px; width: 220px; height: 220px;
-  background: radial-gradient(closest-side, #60a5fa55, transparent);
-  filter: blur(18px);
-  pointer-events: none;
-}
-
-  </style>
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(ellipse at center, #081018 0%, #020405 70%);color:#e6eef6;}
+  .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;}
+  .card{width:100%;max-width:920px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:14px;padding:28px;box-shadow:0 10px 30px rgba(2,6,12,0.7);border:1px solid rgba(255,255,255,0.03);}
+  .header{display:flex;gap:16px;align-items:center;}
+  .dot{width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 18px rgba(255,59,48,0.6);}
+  h1{margin:0;font-size:28px;letter-spacing:1px;}
+  p.lead{color:var(--muted);margin:8px 0 18px;}
+  .terminal{background:#02040a;border-radius:10px;padding:18px;font-family:var(--mono);color:#9fd8a8;line-height:1.35;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);}
+  .line{white-space:pre-wrap;overflow:hidden}
+  .blip{display:inline-block;width:10px;height:18px;background:var(--muted);vertical-align:middle;margin-left:6px;animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0}}
+  .controls{display:flex;gap:10px;margin-top:14px;align-items:center;}
+  button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:8px;color:inherit;cursor:pointer;font-weight:600;}
+  .reveal{background:var(--red);border-color:rgba(255,59,48,0.6);box-shadow:0 6px 18px rgba(255,59,48,0.12);}
+  .small{font-size:13px;color:#d0d7de;margin-top:12px}
+  .prank-badge{display:inline-block;background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:999px;font-weight:700;color:#ffd7d0;margin-left:auto}
+  .footer{margin-top:16px;color:#9aa6b2;font-size:13px}
+  .reveal-text{margin-top:12px;padding:12px;border-radius:8px;background:linear-gradient(180deg,#071018,#041018);display:none}
+</style>
 </head>
 <body>
-  <main class="card" role="status" aria-live="polite">
-    <div class="blur-blob" aria-hidden="true"></div><span class="badge">
-  <span class="spinner" aria-hidden="true"></span>
-  Maintenance in progress
-</span>
+  <div class="wrap">
+    <div class="card" role="main" aria-labelledby="title">
+      <div class="header">
+        <div>
+          <div class="dot" aria-hidden="true"></div>
+        </div>
+        <div>
+          <h1 id="title">SECURITY BREACH — ACTIVE</h1>
+          <div class="small">System integrity compromised — simulation mode</div>
+        </div>
+        <div class="prank-badge">PRANK</div>
+      </div>
 
-<h1>We’ll be back soon</h1>
-<p>Our site is temporarily unavailable while we perform scheduled maintenance.</p>
-<p>Thanks for your patience and understanding.</p>
-<p dir="rtl">ہم جلد واپس آ جائیں گے — تھوڑی دیر بعد دوبارہ کوشش کریں۔</p>
+      <p class="lead">Unauthorized access detected. Displaying simulated console output below for entertainment purposes only.</p>
 
-<div class="actions">
-  <button class="btn btn-primary" onclick="location.reload()">Try Again</button>
-  <a class="btn btn-outline" href="#" id="statusLink">Status Page</a>
-  <a class="btn btn-outline" href="mailto:support@example.com">Contact Support</a>
-</div>
+      <div class="terminal" id="terminal" aria-live="polite">
+        <div class="line" id="line1">Initializing security audit...</div>
+        <div class="line" id="line2">Probing services: OK</div>
+        <div class="line" id="line3">Escalating privileges: FAILED</div>
+        <div class="line" id="line4">Payload queued: 0xDEADBEEF</div>
+        <div class="line" id="line5">Data exfiltration: NONE</div>
+        <div class="line" id="line6">Conclusion: THIS IS A HARmless PRANK<span class="blip" id="blip"></span></div>
+      </div>
 
-<footer>
-  <div style="display:flex; gap:.5rem; justify-content:center; align-items:center;">
-    <span class="ok-dot" aria-hidden="true"></span>
-    <span>All systems healthy — just upgrading.</span>
+      <div class="controls">
+        <button id="revealBtn" class="reveal">Reveal: It's a prank</button>
+        <button id="resetBtn">Reset animation</button>
+      </div>
+
+      <div class="reveal-text" id="revealText">
+        <strong>pay karo!</strong> phir open hogi <em>ehsan</em> 💀 😄
+      </div>
+
+      <div class="footer">
+        Want to customize the message or colors? I can edit it — or you can change the text inside the &lt;div class="reveal-text"&gt;.
+      </div>
+    </div>
   </div>
-</footer>
 
-  </main>  <!-- Optional: set your real Status Page URL below -->  <script>
-    // Replace with your real status URL if you have one
-    document.getElementById('statusLink').href = 'https://status.example.com';
-  </script></body>
+<script>
+  const lines = [
+    "Initializing security audit...",
+    "Probing services: OK",
+    "Scanning network: 192.168.0.0/24",
+    "Escalating privileges: FAILED",
+    "Searching for credentials: none found",
+    "Payload queued: 0xDEADBEEF",
+    "Data exfiltration: NONE",
+    "Conclusion: THIS IS A HARMLESS PRANK"
+  ];
+
+  const terminal = document.getElementById('terminal');
+  terminal.innerHTML = '';
+  let i = 0;
+  function typeNext(){
+    if(i >= lines.length) return;
+    const d = document.createElement('div');
+    d.className = 'line';
+    terminal.appendChild(d);
+    let idx = 0;
+    const text = lines[i];
+    const step = setInterval(()=>{
+      d.textContent = text.slice(0, idx++) ;
+      terminal.scrollTop = terminal.scrollHeight;
+      if(idx > text.length){
+        clearInterval(step);
+        i++;
+        setTimeout(typeNext, 250);
+      }
+    }, 40);
+  }
+  typeNext();
+
+  // blinking block for last line
+  const blip = document.getElementById('blip');
+  function showBlip(){
+    blip.style.visibility = 'inline-block';
+  }
+  setTimeout(showBlip, 2000);
+
+  document.getElementById('revealBtn').addEventListener('click', ()=>{
+    document.getElementById('revealText').style.display = 'block';
+  });
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    i = 0;
+    terminal.innerHTML = '';
+    document.getElementById('revealText').style.display = 'none';
+    typeNext();
+  });
+</script>
+</body>
 </html>
