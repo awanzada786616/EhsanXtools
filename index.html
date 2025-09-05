@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EhsanX tools Login</title>
+  <title>EhsanX Tools Login</title>
   <style>
     body {
       margin: 0;
@@ -29,6 +29,22 @@
       width: 330px;
     }
 
+    .login-box img {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      border: 3px solid #fff;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+
+    .login-box h2 {
+      font-size: 22px;
+      margin-bottom: 18px;
+      color: #333;
+      font-weight: 600;
+    }
+
     .login-box input {
       width: 100%;
       padding: 12px;
@@ -48,6 +64,32 @@
       border-radius: 12px;
       cursor: pointer;
       font-size: 15px;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .social-icons a {
+      background: #fff;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      font-size: 22px;
+      color: #000;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -55,20 +97,41 @@
 
   <div class="login-container">
     <div class="login-box">
-      <h2>EhsanXtools</h2>
+      <!-- Logo -->
+      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="logo">
+
+      <h2>KingXportal</h2>
+
+      <!-- Input fields -->
       <input type="text" id="username" placeholder="Username">
       <input type="password" id="password" placeholder="Password">
+
+      <!-- Buttons -->
       <button class="btn" onclick="login()">Login</button>
+      <button class="btn">Demo</button>
+      <button class="btn">Contact admin</button>
+      <button class="btn">Whatsapp group</button>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
     </div>
   </div>
 
+  <!-- ✅ Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+  <!-- ✅ Login Script -->
   <script>
     function login() {
       let user = document.getElementById("username").value.trim();
       let pass = document.getElementById("password").value.trim();
 
       if (user === "Ehsanhammad" && pass === "Ehsan001") {
-        window.location.href = "dashboard.html"; // ✅ redirect
+        window.location.href = "dashboard.html"; // redirect
       } else {
         alert("❌ Invalid Username or Password");
       }
