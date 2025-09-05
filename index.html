@@ -1,230 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login — EhsanXtools</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EhsanX tools Login</title>
   <style>
-    :root{
-      --bg: #0b1020;
-      --card: rgba(255,255,255,0.1);
-      --border: rgba(255,255,255,0.18);
-      --text: #eaf2ff;
-      --muted:#b8c3d6;
-      --accent:#4ade80;
-      --danger:#f87171;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:"Inter",sans-serif;
-      color:var(--text);
-      background: var(--bg) url("https://i.postimg.cc/sXm4JxJ4/images-2-12.jpg") center/cover no-repeat fixed;
-      background-blend-mode: overlay; /* FIX - theme color visible */
-      display:grid;
-      place-items:center;
-      position:relative;
-    }
-    /* overlay */
-    .overlay{
-      position: fixed; inset:0;
-      background: rgba(0,0,0,0.35); /* FIX - lighter overlay */
-      backdrop-filter: blur(6px);
-      z-index:0;
-    }
-    .card{
-      width:min(92vw,420px);
-      background: var(--card);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border:1px solid var(--border);
-      border-radius:20px;
-      box-shadow: var(--shadow);
-      padding:26px;
-      position:relative;
-      z-index:1;
-      overflow:hidden;
-    }
-    .card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: conic-gradient(from 180deg at 50% 50%, #4ade80, #60a5fa, #a78bfa, #4ade80);
-      filter: blur(24px); 
-      opacity:.35; /* FIX - stronger glow */
-      z-index:0;
-    }
-    .header{ position:relative; z-index:1; text-align:center; margin-bottom:18px;}
-    .header h1{margin:0 0 6px; font-size:1.6rem; font-weight:700;}
-    .header p{margin:0; color:var(--muted); font-size:.95rem}
-    form{ position:relative; z-index:1; display:grid; gap:14px; }
-    label{ font-size:.9rem; color:var(--muted); display:block; margin-bottom:6px}
-    .field{
-      display:flex; align-items:center; gap:10px;
-      background: rgba(12,16,30,.6);
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:12px; padding:12px 14px;
-      transition:border .2s ease, transform .05s ease;
-    }
-    .field:focus-within{ border-color:#86efac; transform: translateY(-1px);}
-    .field input{
-      flex:1; background:transparent; border:0; outline:0; color:var(--text); font-size:1rem;
-    }
-    .actions{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      margin-top:6px;
-    }
-    .checkbox{ display:flex; gap:10px; align-items:center; color:var(--muted); font-size:.9rem }
-    .checkbox input{ width:18px; height:18px; }
-    .btn{
-      appearance:none; border:0; outline:0; cursor:pointer;
-      padding:12px 16px; border-radius:12px; font-weight:700; font-size:1rem;
-      background: linear-gradient(90deg, #22c55e, #16a34a);
-      color:#07120a; box-shadow: 0 8px 18px rgba(34,197,94,.35);
-      transition: transform .06s ease, filter .2s ease;
-    }
-    .btn:hover{ filter: brightness(1.05) }
-    .btn:active{ transform: translateY(1px) }
-    .toggle-eye{
-      user-select:none; cursor:pointer; opacity:.9;
-      font-size:.95rem; color:var(--muted);
-    }
-    .hint,.error{ font-size:.9rem; margin-top:6px; min-height:1.2em;}
-    .hint{ color:var(--muted) }
-    .error{ color:var(--danger); }
-    .caps{ display:none; color:#fbbf24; font-size:.85rem }
-    .footer{ margin-top:14px; text-align:center; color:var(--muted); font-size:.85rem }
-    a,a:visited{ color:#a7f3d0; text-decoration:none }
 
-    /* New glowing buy button */
-    .buy-btn{
-      display:block;
-      width:100%;
-      margin-top:14px;
-      text-align:center;
-      padding:12px;
-      border-radius:12px;
-      background: linear-gradient(90deg,#3b82f6,#2563eb);
-      color:white; font-weight:600;
-      cursor:pointer;
-      text-decoration:none;
-      position:relative;
-      z-index:2;
-      overflow:hidden;
+    .login-container {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    .buy-btn::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:12px;
-      padding:2px;
-      background:linear-gradient(45deg,#3b82f6,#22c55e,#a855f7,#f59e0b,#ef4444,#3b82f6);
-      background-size:300% 300%;
-      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-      -webkit-mask-composite:xor;
-              mask-composite:exclude;
-      animation:lightmove 4s linear infinite;
-    }
-    @keyframes lightmove {
-      0% { background-position:0% 50%; }
-      50% { background-position:100% 50%; }
-      100% { background-position:0% 50%; }
-    }
-    .buy-btn:hover{ filter:brightness(1.1); }
 
-    marquee{
-      margin-top:10px;
-      font-size:.85rem;
-      color:#fbbf24;
+    .login-box {
+      background: #f6f9fc;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 330px;
+    }
+
+    .login-box img {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      border: 3px solid #fff;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+
+    .login-box h2 {
+      font-size: 22px;
+      margin-bottom: 18px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .social-icons a {
+      background: #fff;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      font-size: 22px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .footer-illustration {
+      margin-top: 35px;
+      text-align: center;
+    }
+
+    .footer-illustration lottie-player {
+      width: 320px;
+      height: 220px;
     }
   </style>
+
+  <!-- ✅ Font Awesome (CDN link that works everywhere) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- ✅ Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
-  <div class="overlay"></div>
 
-  <main class="card">
-    <div class="header">
-      <h1>Welcome back</h1>
-      <p>Please sign in to continue</p>
+  <div class="login-container">
+    <div class="login-box">
+      <!-- Logo -->
+      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="logo">
+
+      <h2>KingXportal</h2>
+
+      <!-- Input fields -->
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+
+      <!-- Buttons -->
+      <button class="btn" onclick="login()">Login</button>
+      <button class="btn">Demo</button>
+      <button class="btn">Contact admin</button>
+      <button class="btn">Whatsapp group</button>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
     </div>
 
-    <form id="loginForm" autocomplete="off" novalidate>
-      <div>
-        <label for="username">Username</label>
-        <div class="field">
-          <input id="username" name="username" type="text" placeholder="Enter username" required />
-        </div>
-      </div>
-
-      <div>
-        <label for="password">Password</label>
-        <div class="field">
-          <input id="password" name="password" type="password" placeholder="Enter password" required />
-          <span class="toggle-eye" id="togglePwd">👁️</span>
-        </div>
-        <div class="caps" id="capsNotice">Caps Lock is ON</div>
-      </div>
-
-      <div class="actions">
-        <label class="checkbox">
-          <input type="checkbox" id="remember" /> Remember me
-        </label>
-        <button class="btn" type="submit">Sign in</button>
-      </div>
-
-      <div class="error" id="error"></div>
-      <div class="hint">Hint: username <code>paid login</code> · password <code>Paid login buy karain</code></div>
-    </form>
-
-    <!-- Fixed Buy Button with glow -->
-    <a href="https://wa.me/+923358723830?text=hy+sir+i+want+to+buy+login" target="_blank" class="buy-btn">
-      📩 Contact to Buy Login
-    </a>
-    <a href="https://i.postimg.cc/sD0St7NS/20250825-155155.jpg" target="_blank" class="buy-btn">
-      📩 DEMO
-    </a>
-    <!-- Marquee -->
-    <marquee behavior="scroll" direction="left">
-      🚫 This tool is paid — We don't give free login to anyone · Developed by Wasi ☎ +92 337 6143010
-    </marquee>
-
-    <div class="footer">
-      © <span id="year"></span> King Data. All rights reserved.
+    <!-- Footer Animated Illustration -->
+    <div class="footer-illustration">
+      <lottie-player 
+        src="https://assets10.lottiefiles.com/packages/lf20_57TxAX.json"  
+        background="transparent"  
+        speed="1"  
+        loop  
+        autoplay>
+      </lottie-player>
     </div>
-  </main>
+  </div>
 
+  <!-- ✅ JavaScript -->
   <script>
-    (function(){
-      const VALID_USER="Ehsanhammad", VALID_PASS="Ehsan001";
-      const form=document.getElementById("loginForm");
-      const user=document.getElementById("username");
-      const pass=document.getElementById("password");
-      const errorBox=document.getElementById("error");
-      const togglePwd=document.getElementById("togglePwd");
-      const capsNotice=document.getElementById("capsNotice");
-      const remember=document.getElementById("remember");
-      const year=document.getElementById("year");
-      year.textContent=new Date().getFullYear();
+    function login() {
+      let user = document.getElementById("username").value;
+      let pass = document.getElementById("password").value;
 
-      togglePwd.addEventListener("click",()=>{ pass.type= pass.type==="password"?"text":"password";});
-      pass.addEventListener("keyup",(e)=>{ capsNotice.style.display=e.getModifierState("CapsLock")?"block":"none";});
-      [user,pass].forEach(el=>el.addEventListener("keydown",(e)=>{if(e.key==="Enter") form.requestSubmit();}));
-      const savedUser=localStorage.getItem("kd_username"); if(savedUser) user.value=savedUser;
-
-      form.addEventListener("submit",(e)=>{
-        e.preventDefault();
-        const u=user.value.trim(), p=pass.value;
-        if(!u||!p){ errorBox.textContent="Please fill in both fields."; return;}
-        if(u===VALID_USER&&p===VALID_PASS){
-          errorBox.textContent="";
-          if(remember.checked){ localStorage.setItem("kd_username",u);} else {localStorage.removeItem("kd_username");}
-          window.location.href="dashboard.html";
-        } else { errorBox.textContent="Invalid username or password."; }
-      });
-    })();
+      if (user === "Ehsanhammad" && pass === "Ehsan001") {
+        window.location.href = "dashboard.html"; // redirect
+      } else {
+        alert("❌ Invalid Username or Password");
+      }
+    }
   </script>
+
 </body>
 </html>
