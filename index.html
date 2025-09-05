@@ -1,167 +1,167 @@
-‎<!DOCTYPE html>
-‎<html lang="en">
-‎<head>
-‎  <meta charset="UTF-8">
-‎  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-‎  <title>EhsanX Tools Login</title>
-‎  <style>
-‎    body {
-‎      margin: 0;
-‎      padding: 0;
-‎      font-family: Arial, sans-serif;
-‎      background: #fff;
-‎    }
-‎
-‎    .login-container {
-‎      width: 100%;
-‎      min-height: 100vh;
-‎      display: flex;
-‎      flex-direction: column;
-‎      justify-content: center;
-‎      align-items: center;
-‎    }
-‎
-‎    .login-box {
-‎      background: #f6f9fc;
-‎      padding: 30px 25px;
-‎      border-radius: 20px;
-‎      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-‎      text-align: center;
-‎      width: 330px;
-‎    }
-‎
-‎    .login-box img {
-‎      width: 85px;
-‎      height: 85px;
-‎      border-radius: 50%;
-‎      margin-bottom: 12px;
-‎      border: 3px solid #fff;
-‎      box-shadow: 0 0 12px rgba(0,0,0,0.4);
-‎    }
-‎
-‎    .login-box h2 {
-‎      font-size: 22px;
-‎      margin-bottom: 18px;
-‎      color: #333;
-‎      font-weight: 600;
-‎    }
-‎
-‎    .login-box input {
-‎      width: 100%;
-‎      padding: 12px;
-‎      margin: 8px 0;
-‎      border-radius: 12px;
-‎      border: 1px solid #ccc;
-‎      font-size: 14px;
-‎    }
-‎
-‎    .btn {
-‎      width: 100%;
-‎      padding: 12px;
-‎      margin-top: 10px;
-‎      background: #000;
-‎      color: #fff;
-‎      border: none;
-‎      border-radius: 12px;
-‎      cursor: pointer;
-‎      font-size: 15px;
-‎      font-weight: 500;
-‎    }
-‎
-‎    .btn:hover {
-‎      opacity: 0.9;
-‎    }
-‎
-‎    .social-icons {
-‎      display: flex;
-‎      justify-content: center;
-‎      margin-top: 22px;
-‎    }
-‎
-‎    .social-icons a {
-‎      background: #fff;
-‎      width: 52px;
-‎      height: 52px;
-‎      border-radius: 50%;
-‎      display: flex;
-‎      align-items: center;
-‎      justify-content: center;
-‎      margin: 0 8px;
-‎      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-‎      font-size: 22px;
-‎      color: #000;
-‎      text-decoration: none;
-‎    }
-‎
-‎    .footer-illustration {
-‎      margin-top: 35px;
-‎      text-align: center;
-‎    }
-‎
-‎    .footer-illustration lottie-player {
-‎      width: 320px;
-‎      height: 220px;
-‎    }
-‎  </style>
-‎</head>
-‎<body>
-‎
-‎  <div class="login-container">
-‎    <div class="login-box">
-‎      <!-- Logo -->
-‎      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="logo">
-‎
-‎      <h2>Ehsanxtools</h2>
-‎
-‎      <!-- Input fields -->
-‎      <input type="text" id="username" placeholder="Username">
-‎      <input type="password" id="password" placeholder="Password">
-‎
-‎      <!-- Buttons -->
-‎      <button class="btn" onclick="login()">Login</button>
-‎      <button class="btn">Demo</button>
-‎      <button class="btn">Contact admin</button>
-‎      <button class="btn">Whatsapp group</button>
-‎
-‎      <!-- Social Icons -->
-‎      <div class="social-icons">
-‎        <a href="https://youtube.com/@awaishaidermunara?si=26IQmXTDUhOQFstc"><i class="fab fa-youtube"></i></a>
-‎        <a href="t.me/aloneboywasi"><i class="fab fa-telegram"></i></a>
-‎        <a href="https://wa.me/+923358723830"><i class="fab fa-whatsapp"></i></a>
-‎      </div>
-‎    </div>
-‎
-‎    <!-- ✅ Footer Animated Illustration -->
-‎    <div class="footer-illustration">
-‎      <lottie-player 
-‎        src="https://assets10.lottiefiles.com/packages/lf20_57TxAX.json"  
-‎        background="transparent"  
-‎        speed="1"  
-‎        loop  
-‎        autoplay>
-‎      </lottie-player>
-‎    </div>
-‎  </div>
-‎
-‎  <!-- ✅ Font Awesome -->
-‎  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-‎
-‎  <!-- ✅ Lottie Player -->
-‎  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-‎
-‎  <!-- ✅ Login Script -->
-‎  <script>
-‎    function login() {
-‎      let user = document.getElementById("username").value.trim();
-‎      let pass = document.getElementById("password").value.trim();
-‎
-‎      if (user === "Ehsanhammad" && pass === "Ehsan001") {
-‎        window.location.href = "dashboard.html"; // redirect
-‎      } else {
-‎        alert("❌ Invalid Username or Password");
-‎      }
-‎    }
-‎  </script>
-‎
-‎</body>
-‎</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EhsanX Tools Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+    }
+
+    .login-container {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background: #f6f9fc;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 330px;
+    }
+
+    .login-box img {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      border: 3px solid #fff;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+
+    .login-box h2 {
+      font-size: 22px;
+      margin-bottom: 18px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .social-icons a {
+      background: #fff;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      font-size: 22px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .footer-illustration {
+      margin-top: 35px;
+      text-align: center;
+    }
+
+    .footer-illustration lottie-player {
+      width: 320px;
+      height: 220px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-box">
+      <!-- Logo -->
+      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="logo">
+
+      <h2>Ehsanxtools</h2>
+
+      <!-- Input fields -->
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+
+      <!-- Buttons -->
+      <button class="btn" onclick="login()">Login</button>
+      <button class="btn">Demo</button>
+      <button class="btn">Contact admin</button>
+      <button class="btn">Whatsapp group</button>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="https://youtube.com/@awaishaidermunara?si=26IQmXTDUhOQFstc"><i class="fab fa-youtube"></i></a>
+        <a href="https://t.me/aloneboywasi"><i class="fab fa-telegram"></i></a>
+        <a href="https://wa.me/923358723830"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <!-- ✅ Footer Animated Illustration -->
+    <div class="footer-illustration">
+      <lottie-player 
+        src="https://assets10.lottiefiles.com/packages/lf20_57TxAX.json"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay>
+      </lottie-player>
+    </div>
+  </div>
+
+  <!-- ✅ Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+  <!-- ✅ Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <!-- ✅ Login Script -->
+  <script>
+    function login() {
+      let user = document.getElementById("username").value.trim();
+      let pass = document.getElementById("password").value.trim();
+
+      if (user === "Ehsanhammad" && pass === "Ehsan001") {
+        window.location.href = "dashboard.html"; // redirect
+      } else {
+        alert("❌ Invalid Username or Password");
+      }
+    }
+  </script>
+
+</body>
+</html>
