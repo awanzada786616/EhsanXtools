@@ -16,6 +16,7 @@
       width: 100%;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
@@ -91,6 +92,16 @@
       color: #000;
       text-decoration: none;
     }
+
+    .footer-illustration {
+      margin-top: 35px;
+      text-align: center;
+    }
+
+    .footer-illustration lottie-player {
+      width: 320px;
+      height: 220px;
+    }
   </style>
 </head>
 <body>
@@ -119,10 +130,24 @@
         <a href="#"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
+
+    <!-- ✅ Footer Animated Illustration -->
+    <div class="footer-illustration">
+      <lottie-player 
+        src="https://assets10.lottiefiles.com/packages/lf20_57TxAX.json"  
+        background="transparent"  
+        speed="1"  
+        loop  
+        autoplay>
+      </lottie-player>
+    </div>
   </div>
 
   <!-- ✅ Font Awesome -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+  <!-- ✅ Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
   <!-- ✅ Login Script -->
   <script>
