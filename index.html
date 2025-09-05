@@ -16,7 +16,6 @@
       width: 100%;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
@@ -30,136 +29,46 @@
       width: 330px;
     }
 
-    .login-box img {
-      width: 85px;
-      height: 85px;
-      border-radius: 50%;
-      margin-bottom: 12px;
-      border: 3px solid #fff;
-      box-shadow: 0 0 12px rgba(0,0,0,0.4);
-    }
-
-    .login-box h2 {
-      font-size: 22px;
-      margin-bottom: 18px;
-      color: #333;
-      font-weight: 600;
-    }
-
     .login-box input {
       width: 100%;
       padding: 12px;
       margin: 8px 0;
       border-radius: 12px;
       border: 1px solid #ccc;
-      outline: none;
       font-size: 14px;
-      background: #fff;
     }
 
     .btn {
-      display: block;
       width: 100%;
       padding: 12px;
-      margin: 8px 0;
+      margin-top: 10px;
       background: #000;
       color: #fff;
       border: none;
       border-radius: 12px;
-      font-size: 15px;
       cursor: pointer;
-      font-weight: 500;
-    }
-
-    .btn:hover {
-      opacity: 0.9;
-    }
-
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      margin-top: 22px;
-    }
-
-    .social-icons a {
-      background: #fff;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      font-size: 22px;
-      color: #000;
-      text-decoration: none;
-    }
-
-    .footer-illustration {
-      margin-top: 35px;
-      text-align: center;
-    }
-
-    .footer-illustration lottie-player {
-      width: 320px;
-      height: 220px;
+      font-size: 15px;
     }
   </style>
-
-  <!-- ✅ Font Awesome (CDN link that works everywhere) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- ✅ Lottie Player -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
 
   <div class="login-container">
     <div class="login-box">
-      <!-- Logo -->
-      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="logo">
-
       <h2>KingXportal</h2>
-
-      <!-- Input fields -->
       <input type="text" id="username" placeholder="Username">
       <input type="password" id="password" placeholder="Password">
-
-      <!-- Buttons -->
       <button class="btn" onclick="login()">Login</button>
-      <button class="btn">Demo</button>
-      <button class="btn">Contact admin</button>
-      <button class="btn">Whatsapp group</button>
-
-      <!-- Social Icons -->
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
-
-    <!-- Footer Animated Illustration -->
-    <div class="footer-illustration">
-      <lottie-player 
-        src="https://assets10.lottiefiles.com/packages/lf20_57TxAX.json"  
-        background="transparent"  
-        speed="1"  
-        loop  
-        autoplay>
-      </lottie-player>
     </div>
   </div>
 
-  <!-- ✅ JavaScript -->
   <script>
     function login() {
-      let user = document.getElementById("username").value;
-      let pass = document.getElementById("password").value;
+      let user = document.getElementById("username").value.trim();
+      let pass = document.getElementById("password").value.trim();
 
       if (user === "Ehsanhammad" && pass === "Ehsan001") {
-        window.location.href = "dashboard.html"; // redirect
+        window.location.href = "dashboard.html"; // ✅ redirect
       } else {
         alert("❌ Invalid Username or Password");
       }
